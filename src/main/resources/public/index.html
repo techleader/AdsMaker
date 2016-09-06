@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+    <title>Hello AngularJS</title>
+    <script src="js/angular.js" type="text/javascript"></script>
+    <script src="js/adsmaker.js" type="text/javascript"></script>
+    <link href="css/angular-bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+        [ng\:cloak], [ng-cloak], .ng-cloak {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body ng-app="AdsMaker">
+<div class="container">
+    <h1>Greeting</h1>
+    <div ng-controller="AdsOptionsController" ng-cloak class="ng-cloak">
+        <p> {{greeting}}</p>
+
+        <p> Headlines here</p>
+        <div ng-repeat="headline in headLines">
+            <p> {{headline}}</p>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

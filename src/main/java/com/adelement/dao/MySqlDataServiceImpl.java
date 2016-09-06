@@ -1,13 +1,13 @@
 package com.adelement.dao;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class MySqlDataServiceImpl
 implements DataService {
 
 	public List<String> getAllHeadlines() {
-		// TODO Auto-generated method stub
-		return null;
+		return Arrays.asList("Headlines1","Headlines2");
 	}
 
 	public List<String> getAllSubHeadlines() {
