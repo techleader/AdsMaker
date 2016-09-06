@@ -1,15 +1,17 @@
 package com.adelement.dao;
 
+import com.adelement.model.Button;
 import com.adelement.model.HeadLine;
+import com.adelement.model.SubHeadLine;
 
 import java.util.List;
 
 public interface DataService {
 
 	public List<HeadLine> getAllHeadlines();
-	public List<String> getAllSubHeadlines();
+	public List<SubHeadLine> getAllSubHeadlines();
 	public List<String> getImagesPath();
-	public List<String> getAllButtons();
+	public List<Button> getAllButtons();
 	public boolean saveAds(String headline,String subHeadline,String image, String button);
 
 }

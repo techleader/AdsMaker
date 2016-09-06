@@ -18,3 +18,16 @@ INSERT INTO headlines (headline) VALUES("Nothing but the best");
 INSERT INTO headlines (headline) VALUES("Febulous for less");
 INSERT INTO headlines (headline) VALUES("Marvlous for less");
 INSERT INTO headlines (headline) VALUES("Always less price");
+INSERT INTO headlines (headline) VALUES("Great Deal");
+
+
+INSERT INTO subheadlines (subheadline) VALUES("Rates are changing");
+INSERT INTO subheadlines (subheadline) VALUES("Sweet Deals");
+INSERT INTO subheadlines (subheadline) VALUES("Free next day delivery");
+INSERT INTO subheadlines (subheadline) VALUES("All time 70% Off ");
+
+
+INSERT INTO buttons (label) VALUES("Buy Now");
+INSERT INTO buttons (label) VALUES("Book Now");
+INSERT INTO buttons (label) VALUES("Shop Now");
+
