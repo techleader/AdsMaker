@@ -10,6 +10,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Application {
 
         public static void main(String[] args) {
+            System.setProperty("DB_URL","jdbc:mysql://localhost:3306/test");
+            System.setProperty("DB_DRIVER_CLASS","com.mysql.jdbc.Driver");
+            System.setProperty("DB_USERNAME","root");
+            System.setProperty("DB_PASSWORD","");
             SpringApplication.run(Application.class, args);
         }
 

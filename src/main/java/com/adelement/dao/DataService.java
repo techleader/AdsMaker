@@ -1,10 +1,12 @@
 package com.adelement.dao;
 
+import com.adelement.model.HeadLine;
+
 import java.util.List;
 
 public interface DataService {
 
-	public List<String> getAllHeadlines();
+	public List<HeadLine> getAllHeadlines();
 	public List<String> getAllSubHeadlines();
 	public List<String> getImagesPath();
 	public List<String> getAllButtons();
