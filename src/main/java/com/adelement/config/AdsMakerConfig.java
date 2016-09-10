@@ -1,6 +1,7 @@
 package com.adelement.config;
 
 import com.adelement.dao.DataService;
+import com.adelement.dao.InMemoryDataServiceImpl;
 import com.adelement.dao.MySqlDataServiceImpl;
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,7 +24,6 @@ public class AdsMakerConfig {
     String DB_USERNAME;
     @Value("${DB_PASSWORD}")
     String DB_PASSWORD;
-
     String DATABASE;
 
 
@@ -40,6 +40,6 @@ public class AdsMakerConfig {
 
     @Bean
     public DataService dataService(){
-        return new MySqlDataServiceImpl(dataSource());
+        return new InMemoryDataServiceImpl();
     }
 }
