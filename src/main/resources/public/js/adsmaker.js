@@ -10,7 +10,8 @@ app.controller('AdsOptionsController', ['$scope','$http',function($scope, $http)
     this.headLines = "Invoking request";
     this.subheadLines = "";
     this.buttons = "";
-    $http.get("http://localhost:8080//adelement/ads/listHeadlines")
+    this.images = "";
+    $http.get("http://localhost:8080/adelement/ads/listHeadlines")
         .success(function (response) {
             $scope.headLines = response;
         });
@@ -18,9 +19,13 @@ app.controller('AdsOptionsController', ['$scope','$http',function($scope, $http)
         .success(function (response) {
             $scope.subheadLines = response;
         });
-    $http.get("http://localhost:8080//adelement/ads/listButtons")
+    $http.get("http://localhost:8080/adelement/ads/listButtons")
         .success(function (response) {
             $scope.buttons = response;
+        });
+    $http.get("http://localhost:8080/adelement/images/list")
+        .success(function (response) {
+            $scope.images = response;
         });
 }]);
 
