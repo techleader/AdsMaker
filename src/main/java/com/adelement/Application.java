@@ -14,6 +14,7 @@ public class Application {
             System.setProperty("DB_DRIVER_CLASS","com.mysql.jdbc.Driver");
             System.setProperty("DB_USERNAME","root");
             System.setProperty("DB_PASSWORD","");
+            System.setProperty("IMAGES_LOCATION","D:\\Wallpapers");
             SpringApplication.run(Application.class, args);
         }
 
