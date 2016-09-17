@@ -19,6 +19,7 @@ app.controller('AdsOptionsController', ['$scope','$http',function($scope, $http)
     $http.get("http://localhost:8080/adelement/ads/listHeadlines")
         .success(function (response) {
             $scope.headLines = response;
+            $scope.activeHeading = $scope.headLines[0];
         });
     $http.get("http://localhost:8080//adelement/ads/listSubHeadlines")
         .success(function (response) {
@@ -31,7 +32,10 @@ app.controller('AdsOptionsController', ['$scope','$http',function($scope, $http)
     $http.get("http://localhost:8080/adelement/images/list")
         .success(function (response) {
             $scope.images = response;
+            $scope.activeImage = $scope.images[0];
         });
+
+
 
     $scope.setActiveHeading = function (heading) {
         $scope.activeHeading = heading;
@@ -39,7 +43,6 @@ app.controller('AdsOptionsController', ['$scope','$http',function($scope, $http)
 
     $scope.getActiveHeadingClass = function (headingId) {
         if(headingId === $scope.activeHeading.hid) {
-            console.log("Return active");
             return " active";
         } else {
             return "";
@@ -52,7 +55,6 @@ app.controller('AdsOptionsController', ['$scope','$http',function($scope, $http)
 
     $scope.getActiveSubHeadingClass = function (subheadingId) {
         if(subheadingId === $scope.activeSubHeading.shid) {
-            console.log("Return active");
             return " active";
         } else {
             return "";

@@ -13,7 +13,7 @@
 <style>
 
     body{
-        background-image:url("images/d5.jpg");
+        background-image:url("images/backgroundImage.jpg");
 
     }
     [ng\:cloak], [ng-cloak], .ng-cloak {
@@ -29,7 +29,8 @@
     }
 
     div.polaroid {
-        width: 50%;
+        height:350px;
+        width:450px;
         background-color: white;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         margin-bottom: 25px;
@@ -67,8 +68,8 @@
 
 
     <div class="polaroid marginleft">
-        <div class="con">
-            <img src="adelement/images/{{activeImage}}" alt="Norway" style="width:100%">
+        <div class="con" >
+            <img src="adelement/images/{{activeImage}}" alt="Norway" width="450px" height="280px">
             <div class="topleft">{{activeHeading.headline}}</div><br>
 
         </div>
