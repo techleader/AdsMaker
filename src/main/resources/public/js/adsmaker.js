@@ -11,6 +11,11 @@ app.controller('AdsOptionsController', ['$scope','$http',function($scope, $http)
     this.subheadLines = "";
     this.buttons = "";
     this.images = "";
+    $scope.activeHeading = {};
+    $scope.activeSubHeading = {};
+    $scope.activedButton = {};
+    $scope.activeImage = {};
+
     $http.get("http://localhost:8080/adelement/ads/listHeadlines")
         .success(function (response) {
             $scope.headLines = response;
@@ -27,6 +32,57 @@ app.controller('AdsOptionsController', ['$scope','$http',function($scope, $http)
         .success(function (response) {
             $scope.images = response;
         });
+
+    $scope.setActiveHeading = function (heading) {
+        $scope.activeHeading = heading;
+    };
+
+    $scope.getActiveHeadingClass = function (headingId) {
+        if(headingId === $scope.activeHeading.hid) {
+            console.log("Return active");
+            return " active";
+        } else {
+            return "";
+        }
+    };
+
+    $scope.setActiveSubHeading = function (subheading) {
+        $scope.activeSubHeading = subheading;
+    };
+
+    $scope.getActiveSubHeadingClass = function (subheadingId) {
+        if(subheadingId === $scope.activeSubHeading.shid) {
+            console.log("Return active");
+            return " active";
+        } else {
+            return "";
+        }
+    };
+
+    $scope.setActiveButton = function (button) {
+        $scope.activeButton = button;
+    };
+
+    $scope.getActiveButtonClass = function (buttonId) {
+        if(buttonId === $scope.activebutton.btnid) {
+            return " active";
+        } else {
+            return "";
+        }
+    };
+
+    $scope.setActiveImage = function (image) {
+        $scope.activeImage = image;
+    };
+
+    $scope.getActiveImageClass = function (image) {
+        if(image === $scope.activeImage) {
+            return " active";
+        } else {
+            return "";
+        }
+    };
+
 }]);
 
 

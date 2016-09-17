@@ -88,7 +88,9 @@ public class InMemoryDataServiceImpl implements DataService {
         Stream<String> stream = new BufferedReader(new InputStreamReader(ClassLoader.getSystemResourceAsStream("filedatasource/buttons"))).lines();
         stream.forEach(line -> {
             Button btn = new Button();
-            btn.setBtnLabel(line);
+            String[] split = line.split(",");
+            btn.setBtbid(Integer.parseInt(split[0]));
+            btn.setBtnLabel(split[1]);
             list.add(btn);
         });
         return list;

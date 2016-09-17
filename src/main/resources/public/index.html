@@ -2,92 +2,134 @@
 <html>
 <head>
     <title>Hello AngularJS</title>
+    <script src="css/style.css" type="text/css"></script>
     <script src="js/angular.js" type="text/javascript"></script>
     <script src="js/adsmaker.js" type="text/javascript"></script>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link href="css/angular-bootstrap.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
-    
-<style type="text/css">
+<style>
+
+    body{
+        background-image:url("images/d5.jpg");
+
+    }
     [ng\:cloak], [ng-cloak], .ng-cloak {
-            display: none !important;
-     }
-.w3-btn{width:150px;}
-.float{
-float:left;
-}
-        
+        display: none !important;
+    }
+    .w3-btn{width:150px;}
+    .float{
+        float:left;
+    }
+
+    .con {
+        position: relative;
+    }
+
+    div.polaroid {
+        width: 50%;
+        background-color: white;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        margin-bottom: 25px;
+
+    }
+    .marginleft{
+        margin-left:50%
+    }
+    .topleft {
+        position: absolute;
+        top: 8px;
+        left: 16px;
+        font-size: 30px;
+        color:whitesmoke;
+    }
+
+    div.container {
+        text-align: center;
+        padding: 10px 20px;
+    }
+    div.subheading-container {
+        text-align: left;
+        padding: 10px 20px;
+    }
 </style>
 </head>
 
-<body ng-app="AdsMaker" class="w3-container">
+<body ng-app="AdsMaker" class="w3-container" ng-controller="AdsOptionsController">
 
-
-<nav class="w3-sidenav w3-white w3-card-2" style="display:none" id="mySidenav">
-  <a href="javascript:void(0)"
-  onclick="w3_close()"
-  class="w3-closenav w3-large">Close &times;</a>
-  <a href="#">Home</a>
-  <a href="#">Services</a>
-  <a href="#">Contact Us</a>
-  </nav>
-
-<div id="main">
-
-<header class="w3-container w3-teal">
-  <span class="w3-opennav w3-xlarge" onclick="w3_open()" id="openNav">&#9776;</span>
-  <h1>Create Your Own Add</h1>
-</header>
-<div >
-<img src="adelement/images/d.jpg" alt="Car" style="width:50%; height:30%; margin-left:50%;">
 <div class="container">
-    <h1>Greeting</h1>
-    <div ng-controller="AdsOptionsController" ng-cloak class="ng-cloak">
-        <p> {{greeting}}</p>
+    <header class="w3-container w3-teal">
+      <span class="w3-opennav w3-xlarge" onclick="w3_open()" id="openNav">&#9776;</span>
+      <h1>Create Your Own Add 12345</h1>
+    </header>
 
 
-        <div ng-repeat="headline in headLines">
-            <p> {{headline}}</p>
+    <div class="polaroid marginleft">
+        <div class="con">
+            <img src="adelement/images/{{activeImage}}" alt="Norway" style="width:100%">
+            <div class="topleft">{{activeHeading.headline}}</div><br>
+
         </div>
+        <div class="subheading-container">
+            {{activeSubHeading.subheadline}}
+            <div class="w3-btn-group">
 
-        <div class="container">
+            <button class="w3-btn w3-teal">{{activeButton.btnLabel}}</button></div>
+        </div>
+    </div>
+
+<div class="container">
+       <div  ng-cloak class="ng-cloak">
+
+          <div class="container">
             <h2>Headlines</h2>
             <ul class="list-group">
-                <li class="list-group-item" ng-repeat="headline in headLines">{{headline}}</li>
+                <div ng-repeat="headline in headLines">
+                    <a class="list-group-item  {{getActiveHeadingClass(headline.hid)}}"  ng-click="setActiveHeading(headline)">{{headline.headline}}
+                    </a>
+                </div>
             </ul>
         </div>
 
         <div class="container">
             <h2>Sub-Headlines</h2>
             <ul class="list-group">
-                <li class="list-group-item" ng-repeat="subheadline in subheadLines">{{subheadline}}</li>
+                <div ng-repeat="subheadline in subheadLines">
+                    <a class="list-group-item  {{getActiveSubHeadingClass(subheadline.shid)}}"  ng-click="setActiveSubHeading(subheadline)">{{subheadline.subheadline}}
+                    </a>
+                </div>
             </ul>
         </div>
 
         <div class="container">
-            <h2>Buttons</h2>
-            <ul class="list-group">
-                <li class="list-group-item" ng-repeat="button in buttons">{{button}}</li>
-            </ul>
-        </div>
-        <div class="container">
-            <h2>Images</h2>
-            <ul class="list-group">
-                <li class="list-group-item" ng-repeat="image in images">
-                    <img src="adelement/images/thumbnail/{{image}}" alt="Car">{{image}}
-                </li>
-            </ul>
-        </div>
+           <h2>Buttons</h2>
+           <ul class="list-group">
+               <div ng-repeat="button in buttons">
+                   <a class="list-group-item  {{getActiveSubHeadingClass(subheadline.shid)}}"  ng-click="setActiveButton(button)">
+                       <div class="w3-btn-group">
+                           <button class="w3-btn w3-teal" >{{button.btnLabel}}</button>
+                       </div>
+                   </a>
+               </div>
+           </ul>
+       </div>
+       <div class="container">
+           <h2>Buttons</h2>
+           <ul class="list-group">
+               <div ng-repeat="image in images">
+                   <a class="list-group-item  {{getActiveImageClass(images)}}"  ng-click="setActiveImage(image)">
+                       <img src="adelement/images/thumbnail/{{image}}" alt="Car">{{image}}
+                   </a>
+               </div>
+           </ul>
+       </div>
 
 	</div>
 	</div>
-</div>
-<div class="w3-container">
-  
-</div>
+
+
 
 <footer class="w3-container w3-teal">
   <h5>Footer</h5>
@@ -95,7 +137,7 @@ float:left;
 </footer>
 
 </div>
-      
+
 <script>
 function w3_open() {
   document.getElementById("main").style.marginLeft = "25%";

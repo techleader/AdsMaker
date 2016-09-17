@@ -1,0 +1,13 @@
+
+body{
+    background-color: aquamarine;
+
+}
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+    display: none !important;
+}
+.w3-btn{width:150px;}
+.float{
+    float:left;
+}
