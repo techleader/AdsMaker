@@ -43,7 +43,7 @@ app.controller('AdsOptionsController', ['$scope','$http',function($scope, $http)
 
     $scope.getActiveHeadingClass = function (headingId) {
         if(headingId === $scope.activeHeading.hid) {
-            return " active";
+            return " list-group-item-success";
         } else {
             return "";
         }
@@ -55,7 +55,7 @@ app.controller('AdsOptionsController', ['$scope','$http',function($scope, $http)
 
     $scope.getActiveSubHeadingClass = function (subheadingId) {
         if(subheadingId === $scope.activeSubHeading.shid) {
-            return " active";
+            return " list-group-item-danger";
         } else {
             return "";
         }
@@ -67,7 +67,7 @@ app.controller('AdsOptionsController', ['$scope','$http',function($scope, $http)
 
     $scope.getActiveButtonClass = function (buttonId) {
         if(buttonId === $scope.activebutton.btnid) {
-            return " active";
+            return " list-group-item-success";
         } else {
             return "";
         }
