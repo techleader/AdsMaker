@@ -7,6 +7,7 @@ import com.adelement.model.Button;
 import com.adelement.model.HeadLine;
 import com.adelement.model.SubHeadLine;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,5 +32,10 @@ public class AdsController {
 	@RequestMapping("/adelement/ads/listButtons")
 	public List<Button> getAllButtons(){
 		return dataService.getAllButtons();
+	}
+
+	@RequestMapping("/adelement/ads/save")
+	public boolean saveAds(@PathVariable String headline, @PathVariable String subheadline,@PathVariable String imageUrl,@PathVariable String button){
+		return dataService.saveAds(headline,subheadline,imageUrl,button);
 	}
 }

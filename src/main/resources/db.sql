@@ -13,6 +13,13 @@ CREATE TABLE headlines (
     label VARCHAR(30) NOT NULL,
     PRIMARY KEY (btnid));
 
+ CREATE TABLE saved_ads(
+    adsid INT NOT NULL,
+    headline VARCHAR(100) NOT NULL,
+    subheadline VARCHAR(100) NOT NULL,
+    imagesurl VARCHAR(100) NOT NULL,
+    button VARCHAR(30) NOT NULL,
+    PRIMARY KEY (adsid));
 
 INSERT INTO headlines (headline) VALUES("Nothing but the best");
 INSERT INTO headlines (headline) VALUES("Febulous for less");
@@ -30,4 +37,6 @@ INSERT INTO subheadlines (subheadline) VALUES("All time 70% Off ");
 INSERT INTO buttons (label) VALUES("Buy Now");
 INSERT INTO buttons (label) VALUES("Book Now");
 INSERT INTO buttons (label) VALUES("Shop Now");
+
+
 

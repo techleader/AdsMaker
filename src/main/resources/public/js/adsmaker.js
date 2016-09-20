@@ -13,7 +13,7 @@ app.controller('AdsOptionsController', ['$scope','$http',function($scope, $http)
     this.images = "";
     $scope.activeHeading = {};
     $scope.activeSubHeading = {};
-    $scope.activedButton = {};
+    $scope.activeButton = {};
     $scope.activeImage = {};
 
     $http.get("http://localhost:8080/adelement/ads/listHeadlines")
@@ -34,7 +34,6 @@ app.controller('AdsOptionsController', ['$scope','$http',function($scope, $http)
             $scope.images = response;
             $scope.activeImage = $scope.images[0];
         });
-
 
 
     $scope.setActiveHeading = function (heading) {
@@ -83,6 +82,14 @@ app.controller('AdsOptionsController', ['$scope','$http',function($scope, $http)
         } else {
             return "";
         }
+    };
+
+    $scope.saveAds = function () {
+        var requestparams = {headline:$scope.activeHeading.headline, subheadline:$scope.activeSubHeading.subheadline,imageUrl:$scope.activeImage, button:$scope.activeButton.btnLabel};
+        $http.post("http://localhost:8080//adelement/ads/save",requestparams)
+            .success(function (response) {
+                console.log("Ads Saved");
+            });
     };
 
 }]);
