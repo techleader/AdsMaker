@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 import javax.sql.DataSource;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
@@ -74,7 +75,9 @@ public class MySqlDataServiceImpl implements DataService {
 
 	public boolean saveAds(String headline, String subHeadline, String image,
 			String button) {
-		// TODO Auto-generated method stub
+		int hashCode = (headline + subHeadline + image + button).hashCode();
+		String update = "INSERT INTO headlines (adsid,headline,subheadline,imagesurl,button) VALUES(?,?,?,?,?);";
+		jdbcTemplate.update(update,new Object[]{hashCode, headline,subHeadline,image,button});
 		return false;
 	}
 
