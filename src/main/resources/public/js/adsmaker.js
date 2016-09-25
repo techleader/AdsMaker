@@ -96,8 +96,10 @@ app.controller('AdsOptionsController', ['$scope','$http',function($scope, $http)
         }
         $http.post("http://localhost:8080/adelement/ads/save",requestparams, config)
             .success(function (response) {
-                console.log("Ads Saved");
-            });
+                alert("Ads Saved successfully");
+            })
+            .error(function(error) {
+                alert("Unable to save the ads. Either it would be a duplicate ads or something other unknown error has occurred.") });
     };
 
 }]);
