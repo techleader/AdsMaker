@@ -88,24 +88,16 @@ app.controller('AdsOptionsController', ['$scope','$http',function($scope, $http)
 
     $scope.saveAds = function () {
         var requestparams = {'headline':$scope.activeHeading.headline, 'subheadline':$scope.activeSubHeading.subheadline,'imageurl':$scope.activeImage, 'button':$scope.activeButton.btnLabel};
-       // var requestparams = {headline:$scope.activeHeading.headline, subheadline:$scope.activeSubHeading.subheadline,imageurl:$scope.activeImage, button:$scope.activeButton.btnLabel};
-       // var requestparams = [{'headline':$scope.activeHeading.headline},{'subheadline':$scope.activeSubHeading.subheadline},{'imageUrl':$scope.activeImage}, {'button':$scope.activeButton.btnLabel}];
-
-        var data3 = [$scope.activeHeading.headline, $scope.activeSubHeading.subheadline,$scope.activeImage, $scope.activeButton.btnLabel];
         console.log(requestparams);
-        var data = $.param(requestparams);
-        var data2 = angular.toJson(requestparams);
         var config = {
             headers : {
-                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-                //'Content-Type': 'application/json'
+                'Content-Type': 'application/json'
             }
         }
-        $http.post("http://localhost:8080/adelement/ads/save",data, config)
+        $http.post("http://localhost:8080/adelement/ads/save",requestparams, config)
             .success(function (response) {
                 console.log("Ads Saved");
             });
-
     };
 
 }]);

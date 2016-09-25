@@ -1,6 +1,7 @@
 package com.adelement.dao;
 
 import ch.qos.logback.core.util.FileUtil;
+import com.adelement.model.Ads;
 import com.adelement.model.Button;
 import com.adelement.model.HeadLine;
 import com.adelement.model.SubHeadLine;
@@ -40,7 +41,7 @@ public class InMemoryDataServiceImpl implements DataService {
     }
 
     @Override
-    public boolean saveAds(String headline, String subHeadline, String image, String button) {
+    public boolean saveAds(Ads ads) {
         return false;
     }
 

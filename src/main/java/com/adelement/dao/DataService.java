@@ -1,5 +1,6 @@
 package com.adelement.dao;
 
+import com.adelement.model.Ads;
 import com.adelement.model.Button;
 import com.adelement.model.HeadLine;
 import com.adelement.model.SubHeadLine;
@@ -12,6 +13,6 @@ public interface DataService {
 	public List<SubHeadLine> getAllSubHeadlines();
 	public List<String> getImagesPath();
 	public List<Button> getAllButtons();
-	public boolean saveAds(String headline,String subHeadline,String image, String button);
+	public boolean saveAds(Ads ads);
 
 }

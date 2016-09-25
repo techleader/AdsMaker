@@ -5,6 +5,7 @@ import java.net.URLDecoder;
 import java.util.List;
 
 import com.adelement.dao.MySqlDataServiceImpl;
+import com.adelement.model.Ads;
 import com.adelement.model.Button;
 import com.adelement.model.HeadLine;
 import com.adelement.model.SubHeadLine;
@@ -35,17 +36,7 @@ public class AdsController {
 	}
 
 	@RequestMapping("/adelement/ads/save")
-	public boolean saveAds(@RequestBody String headline, @RequestBody String subheadline,@RequestBody String imageurl,@RequestBody String button){
-		try {
-			headline = URLDecoder.decode(headline,"UTF-8");
-			subheadline = URLDecoder.decode(subheadline,"UTF-8");
-			button = URLDecoder.decode(button,"UTF-8");
-			imageurl = URLDecoder.decode(imageurl,"UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		}
-		System.out.println("Saving ads " + headline + ", " + subheadline + ", " + imageurl + ", " + button);
-		return dataService.saveAds(headline,subheadline,imageurl,button);
+	public boolean saveAds(@RequestBody Ads ads){
+		return dataService.saveAds(ads);
 	}
 }

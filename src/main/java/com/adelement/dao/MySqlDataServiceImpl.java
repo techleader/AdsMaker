@@ -1,5 +1,6 @@
 package com.adelement.dao;
 
+import com.adelement.model.Ads;
 import com.adelement.model.Button;
 import com.adelement.model.HeadLine;
 import com.adelement.model.SubHeadLine;
@@ -73,10 +74,14 @@ public class MySqlDataServiceImpl implements DataService {
 		return headlines;
 	}
 
-	public boolean saveAds(String headline, String subHeadline, String image,
-			String button) {
+	public boolean saveAds(Ads ads) {
+		String headline = ads.getHeadline();
+		String subHeadline = ads.getSubheadline();
+		String image = ads.getImageurl();
+		String button = ads.getButton();
 		int hashCode = (headline + subHeadline + image + button).hashCode();
-		String update = "INSERT INTO headlines (adsid,headline,subheadline,imagesurl,button) VALUES(?,?,?,?,?);";
+		String update = "INSERT INTO saved_ads (adsid,headline,subheadline,imagesurl,button) VALUES(?,?,?,?,?);";
+		System.out.println("Saving Ads : " + ads);
 		jdbcTemplate.update(update,new Object[]{hashCode, headline,subHeadline,image,button});
 		return false;
 	}
