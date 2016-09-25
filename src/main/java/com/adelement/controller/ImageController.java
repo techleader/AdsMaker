@@ -27,8 +27,6 @@ public class ImageController  {
     @ResponseBody
     public byte[] getImage(@PathVariable String keyId,@PathVariable String imageType, OutputStream outputStream) {
         try {
-            // TODO: this just returns a hardcoded image
-            System.out.println("Opening image : " + IMAGES_LOCATION  + "/"+keyId+"."+imageType);
             BufferedImage img=  ImageIO.read(new File(IMAGES_LOCATION  + "/"+keyId+"."+imageType));
             ByteArrayOutputStream bao = new ByteArrayOutputStream();
             ImageIO.write(img, "jpg", bao);
@@ -44,7 +42,6 @@ public class ImageController  {
     public byte[] getThumbnailImage(@PathVariable String keyId,@PathVariable String imageType, OutputStream outputStream) {
         try {
             File image = new File(IMAGES_LOCATION  + "/"+keyId+"."+imageType);
-            System.out.println("Opening thumbnail image : " + IMAGES_LOCATION  + "/"+keyId+"."+imageType );
             File thumb = getThumbNail(image);
             BufferedImage img=  ImageIO.read(thumb);
             thumb.delete();

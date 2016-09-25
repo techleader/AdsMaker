@@ -1,5 +1,7 @@
 package com.adelement.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.List;
 
 import com.adelement.dao.MySqlDataServiceImpl;
@@ -7,9 +9,7 @@ import com.adelement.model.Button;
 import com.adelement.model.HeadLine;
 import com.adelement.model.SubHeadLine;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.adelement.dao.DataService;
 
@@ -35,7 +35,17 @@ public class AdsController {
 	}
 
 	@RequestMapping("/adelement/ads/save")
-	public boolean saveAds(@PathVariable String headline, @PathVariable String subheadline,@PathVariable String imageUrl,@PathVariable String button){
-		return dataService.saveAds(headline,subheadline,imageUrl,button);
+	public boolean saveAds(@RequestBody String headline, @RequestBody String subheadline,@RequestBody String imageurl,@RequestBody String button){
+		try {
+			headline = URLDecoder.decode(headline,"UTF-8");
+			subheadline = URLDecoder.decode(subheadline,"UTF-8");
+			button = URLDecoder.decode(button,"UTF-8");
+			imageurl = URLDecoder.decode(imageurl,"UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+		System.out.println("Saving ads " + headline + ", " + subheadline + ", " + imageurl + ", " + button);
+		return dataService.saveAds(headline,subheadline,imageurl,button);
 	}
 }

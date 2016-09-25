@@ -24,10 +24,12 @@ app.controller('AdsOptionsController', ['$scope','$http',function($scope, $http)
     $http.get("http://localhost:8080//adelement/ads/listSubHeadlines")
         .success(function (response) {
             $scope.subheadLines = response;
+            $scope.activeSubHeading = $scope.subheadLines[0];
         });
     $http.get("http://localhost:8080/adelement/ads/listButtons")
         .success(function (response) {
             $scope.buttons = response;
+            $scope.activeButton = $scope.buttons[0];
         });
     $http.get("http://localhost:8080/adelement/images/list")
         .success(function (response) {
@@ -85,11 +87,25 @@ app.controller('AdsOptionsController', ['$scope','$http',function($scope, $http)
     };
 
     $scope.saveAds = function () {
-        var requestparams = {headline:$scope.activeHeading.headline, subheadline:$scope.activeSubHeading.subheadline,imageUrl:$scope.activeImage, button:$scope.activeButton.btnLabel};
-        $http.post("http://localhost:8080//adelement/ads/save",requestparams)
+        var requestparams = {'headline':$scope.activeHeading.headline, 'subheadline':$scope.activeSubHeading.subheadline,'imageurl':$scope.activeImage, 'button':$scope.activeButton.btnLabel};
+       // var requestparams = {headline:$scope.activeHeading.headline, subheadline:$scope.activeSubHeading.subheadline,imageurl:$scope.activeImage, button:$scope.activeButton.btnLabel};
+       // var requestparams = [{'headline':$scope.activeHeading.headline},{'subheadline':$scope.activeSubHeading.subheadline},{'imageUrl':$scope.activeImage}, {'button':$scope.activeButton.btnLabel}];
+
+        var data3 = [$scope.activeHeading.headline, $scope.activeSubHeading.subheadline,$scope.activeImage, $scope.activeButton.btnLabel];
+        console.log(requestparams);
+        var data = $.param(requestparams);
+        var data2 = angular.toJson(requestparams);
+        var config = {
+            headers : {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                //'Content-Type': 'application/json'
+            }
+        }
+        $http.post("http://localhost:8080/adelement/ads/save",data, config)
             .success(function (response) {
                 console.log("Ads Saved");
             });
+
     };
 
 }]);

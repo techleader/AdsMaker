@@ -9,52 +9,74 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
-<style>
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <style>
 
-h2{
- color:white;
-}
-    body{
-        background-image:url("images/backgroundImage.jpg");
-    }
-    [ng\:cloak], [ng-cloak], .ng-cloak {
-        display: none !important;
-    }
-    .w3-btn{width:150px;}
+        .scroll {
+            background-color:white;
+            width: 500px;
+            height: 250px;
+            overflow: auto;
+            margin-left: 5%;
+        }
+        h2{
+            color:white;
+        }
+        body{
+            background-image:url("images/backgroundImage.jpg");
+        }
+        [ng\:cloak], [ng-cloak], .ng-cloak {
+            display: none !important;
+        }
+        .w3-btn{width:150px;}
 
-    .float{
-        float:left;
-    }
+        .float{
+            float:left;
+        }
 
-    .con {
-        position: relative;
-    }
+        .con {
+            position: relative;
+        }
 
-    div.polaroid {
-        height:350px;
-        width:450px;
-        background-color: white;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        margin-bottom: 25px;
-    }
-    .marginleft{
-       margin-top:10%;
-       margin-left:10%;
-    }
-    .topleft {
-        position: absolute;
-        top: 8px;
-        left: 16px;
-        font-size: 30px;
-        color:whitesmoke;
-    }
+        div.polaroid {
+            height:350px;
+            width:450px;
+            background-color: white;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            margin-bottom: 25px;
+        }
+        .marginleft{
+            margin-top:10%;
+            margin-left:10%;
+        }
+        .topleft {
+            position: absolute;
+            top: 8px;
+            left: 16px;
+            font-size: 30px;
+            font-family:"Courier New", Courier, monospace;
+            background-color:black;
+            opacity: 0.5;
+            color:white;
+        }
+        .bottomleft {
+            position: absolute;
+            bottom: 9px;
+            background-color:black;
+            opacity: 0.5;
 
-    div.subheading-container {
-        text-align: left;
-        padding: 10px 20px;
-    }
-</style>
+            left: 16px;
+            font-size: 20px;
+            font-family:"Courier New", Courier, monospace;
+            color:white;
+        }
+        .button{
+            margin-left:35%;
+            margin-top:7%
+        }
+
+
+    </style>
 </head>
 
 <body ng-app="AdsMaker" ng-controller="AdsOptionsController">
@@ -63,16 +85,17 @@ h2{
 
     <div>
         <header class="w3-container w3-teal">
-          <h1>Create Your Own Ad</h1>
+            <h1>Create Your Own Ad</h1>
         </header>
     </div>
 
-<div class="col-sm-6">
+    <div class="col-sm-6">
 
-       <div  ng-cloak >
+        <div  ng-cloak >
+
 
             <ul class="list-group">
-             <h2>Headlines</h2>
+                <h2>Headlines</h2>
                 <div ng-repeat="headline in headLines">
                     <a class="list-group-item{{getActiveHeadingClass(headline.hid)}}"  ng-click="setActiveHeading(headline)">{{headline.headline}}
                     </a>
@@ -80,46 +103,48 @@ h2{
             </ul>
 
             <h2>Sub-Headlines</h2>
-            <ul class="list-group">
+            <ul class="list-group" style="margin-bottom:3%;">
                 <div ng-repeat="subheadline in subheadLines">
                     <a class="list-group-item{{getActiveSubHeadingClass(subheadline.shid)}}"  ng-click="setActiveSubHeading(subheadline)">{{subheadline.subheadline}}
                     </a>
                 </div>
             </ul>
 
-           <h2>Buttons</h2>
-           <ul class="list-group">
-               <div ng-repeat="button in buttons">
-                   <a class="list-group-item{{getActiveSubHeadingClass(subheadline.shid)}}"  ng-click="setActiveButton(button)">
-                       <div class="w3-btn-group">
-                           <button class="w3-btn w3-teal" >{{button.btnLabel}}</button>
-                       </div>
-                   </a>
-               </div>
-           </ul>
+            <h2>Buttons</h2>
+            <ul >
+                <div ng-repeat="button in buttons">
+                    <a href="" ng-click="setActiveButton(button)">
+                        <div class="w3-btn-group">
+                            <button class="w3-btn w3-teal" >{{button.btnLabel}}</button>
+                        </div><br>
+                    </a>
+                </div>
+                <button class="w3-btn w3-teal" ng-click="saveAds()" >SAVE ADS</button>
+            </ul>
 
 
-       </div>
+        </div>
 
-</div>
+    </div>
 
     <div class="col-sm-6">
         <div class="polaroid marginleft">
             <div class="con" >
                 <img src="adelement/images/{{activeImage}}" alt="Norway" width="450px" height="270px">
-                <div class="topleft">{{activeHeading.headline}}</div><br>
 
+                <div class="topleft">{{activeHeading.headline}}</div><br>
             </div>
-            <div class="subheading-container">
-                <p>{{activeSubHeading.subheadline}}</p>
-                <div class="w3-btn-group">
-                    <button class="w3-btn w3-teal">{{activeButton.btnLabel}}</button></div>
+            <div >
+                <div class=left">{{activeSubHeading.subheadline}}</div>
+
+                <div class="w3-btn-group bottomright">
+                    <button class="w3-btn w3-teal button" >{{activeButton.btnLabel}}</button></div>
             </div>
         </div>
     </div>
-<div class="col-sm-6">
-        <h2>images</h2>
-        <ul class="list-group">
+    <div class="col-sm-6 ">
+        <h2 style="margin-left:5%">images</h2>
+        <ul class="list-group scroll" >
             <div ng-repeat="image in images">
                 <a class="list-group-item{{getActiveImageClass(images)}}"  ng-click="setActiveImage(image)">
                     <img src="adelement/images/thumbnail/{{image}}" alt="Car" class="w3-left w3-circle w3-margin-right" style="width:30px">{{image}}
@@ -127,32 +152,33 @@ h2{
             </div>
         </ul>
 
-</div>
-    <button ng-click="saveAds()">Save Ads</button>
+    </div>
 </div>
 <div class="container">
-<footer class="w3-container w3-teal">
-    <h5>Footer</h5>
-    <p>Footer information goes here</p>
-</footer>
-    </div>
+    <!--
+    <footer class="w3-container w3-teal">
+        <h5>Footer</h5>
+        <p>Footer information goes here</p>
+    </footer>
+        </div>
+    -->
 
 
-<script>
-function w3_open() {
-  document.getElementById("main").style.marginLeft = "25%";
-  document.getElementById("mySidenav").style.width = "25%";
-  document.getElementById("mySidenav").style.display = "block";
-  document.getElementById("openNav").style.display = 'none';
-}
-function w3_close() {
-  document.getElementById("main").style.marginLeft = "0%";
-  document.getElementById("mySidenav").style.display = "none";
-  document.getElementById("openNav").style.display = "inline-block";
-}
-</script>
-     
+    <script>
+        function w3_open() {
+            document.getElementById("main").style.marginLeft = "25%";
+            document.getElementById("mySidenav").style.width = "25%";
+            document.getElementById("mySidenav").style.display = "block";
+            document.getElementById("openNav").style.display = 'none';
+        }
+        function w3_close() {
+            document.getElementById("main").style.marginLeft = "0%";
+            document.getElementById("mySidenav").style.display = "none";
+            document.getElementById("openNav").style.display = "inline-block";
+        }
+    </script>
 
 
+</div>
 </body>
 </html>
