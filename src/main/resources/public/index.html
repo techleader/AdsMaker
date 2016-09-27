@@ -60,21 +60,57 @@
             color:white;
         }
         .bottomleft {
-            position: absolute;
-            bottom: 9px;
-            background-color:black;
-            opacity: 0.5;
 
-            left: 16px;
+            background-color:;
+            left: 7px;
+            bottom:1px;
             font-size: 20px;
             font-family:"Courier New", Courier, monospace;
-            color:white;
+            color:black;
         }
         .button{
-            margin-left:35%;
-            margin-top:7%
+            margin-left:60%;
+            margin-top:3%
         }
+.button1 {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
 
+.button1 span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button1 span:after {
+  content: '»';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button1:hover span {
+  padding-right: 25px;
+}
+
+.button1:hover span:after {
+  opacity: 1;
+  right: 0;
+}
 
     </style>
 </head>
@@ -119,7 +155,7 @@
                         </div><br>
                     </a>
                 </div>
-                <button class="w3-btn w3-teal" ng-click="saveAds()" >SAVE ADS</button>
+                <button class="button1" style="vertical-align:middle"><span>Save </span></button>
             </ul>
 
 
@@ -130,15 +166,15 @@
     <div class="col-sm-6">
         <div class="polaroid marginleft">
             <div class="con" >
-                <img src="adelement/images/{{activeImage}}" alt="Norway" width="450px" height="270px">
+                <img src="adelement/images/{{activeImage}}" alt="esa desh h mera" width="450px" height="270px">
 
                 <div class="topleft">{{activeHeading.headline}}</div><br>
             </div>
-            <div >
-                <div class=left">{{activeSubHeading.subheadline}}</div>
-
-                <div class="w3-btn-group bottomright">
-                    <button class="w3-btn w3-teal button" >{{activeButton.btnLabel}}</button></div>
+            <div>
+                <div class="bottomleft">{{activeSubHeading.subheadline}}</div>
+                    <div class="w3-btn-group bottomright">
+                        <button class="w3-btn w3-teal button" >{{activeButton.btnLabel}}</button>
+                    </div>
             </div>
         </div>
     </div>
