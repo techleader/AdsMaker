@@ -14,13 +14,21 @@
 
         .scroll {
             background-color:white;
-            width: 500px;
+            width: 550px;
             height: 250px;
             overflow: auto;
-            margin-left: 5%;
+            margin-left:
+        }
+        .healineScroll {
+            background-color:white;
+            width: 550px;
+            height: 180px;
+            overflow: auto;
+            margin-left: ;
         }
         h2{
             color:white;
+            margin-left:10px;
         }
         body{
             background-image:url("images/backgroundImage.jpg");
@@ -28,7 +36,9 @@
         [ng\:cloak], [ng-cloak], .ng-cloak {
             display: none !important;
         }
-        .w3-btn{width:150px;}
+        .w3-btn{
+            width:150px;
+        }
 
         .float{
             float:left;
@@ -60,11 +70,10 @@
             color:white;
         }
         .bottomleft {
-
             background-color:;
             left: 7px;
             bottom:1px;
-            font-size: 20px;
+            font-size: 20px;g
             font-family:"Courier New", Courier, monospace;
             color:black;
         }
@@ -72,6 +81,13 @@
             margin-left:60%;
             margin-top:3%
         }
+.seven {
+    border: 1px solid white;
+    background:orange;
+    padding: 6px 25px;
+    width: 450px;
+    border-radius: 10px;
+}
 .button1 {
   display: inline-block;
   border-radius: 4px;
@@ -81,7 +97,7 @@
   text-align: center;
   font-size: 28px;
   padding: 20px;
-  width: 200px;
+  width: 300px;
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;
@@ -104,13 +120,24 @@
 }
 
 .button1:hover span {
-  padding-right: 25px;
+  padding-right: 30px;
 }
 
 .button1:hover span:after {
   opacity: 1;
   right: 0;
 }
+.img {
+    margin: 5px;
+    float: left;
+    width: 400px;
+}
+
+
+
+
+
+
 
     </style>
 </head>
@@ -129,44 +156,42 @@
 
         <div  ng-cloak >
 
-
-            <ul class="list-group">
-                <h2>Headlines</h2>
+            <h2 > <font face="Agency FB">Select Headlines</font></h2>
+            <ul class="list-group healineScroll">
                 <div ng-repeat="headline in headLines">
                     <a class="list-group-item{{getActiveHeadingClass(headline.hid)}}"  ng-click="setActiveHeading(headline)">{{headline.headline}}
                     </a>
                 </div>
             </ul>
 
-            <h2>Sub-Headlines</h2>
-            <ul class="list-group" style="margin-bottom:3%;">
+            <h2> <font face="Agency FB">Select Sub-Headlines</font></h2>
+            <ul class="list-group healineScroll" style="margin-bottom:3%;">
                 <div ng-repeat="subheadline in subheadLines">
                     <a class="list-group-item{{getActiveSubHeadingClass(subheadline.shid)}}"  ng-click="setActiveSubHeading(subheadline)">{{subheadline.subheadline}}
                     </a>
                 </div>
             </ul>
 
-            <h2>Buttons</h2>
-            <ul >
-                <div ng-repeat="button in buttons">
-                    <a href="" ng-click="setActiveButton(button)">
-                        <div class="w3-btn-group">
-                            <button class="w3-btn w3-teal" >{{button.btnLabel}}</button>
-                        </div><br>
-                    </a>
-                </div>
-                <button class="button1" style="vertical-align:middle"><span>Save </span></button>
-            </ul>
+            <h2 style="margin-left:2%"><font face="Agency FB">Select Images</font></h2>
 
+               <ul class="list-group scroll" >
+                   <div ng-repeat="image in images">
+                       <a class="list-group-item{{getActiveImageClass(images)}}"  ng-click="setActiveImage(image)">
+                           <img src="adelement/images/thumbnail/{{image}}" alt="Car" >{{image}}
+                       </a>
+                   </div>
+               </ul>
 
+           </div>
         </div>
 
-    </div>
+
 
     <div class="col-sm-6">
         <div class="polaroid marginleft">
+
             <div class="con" >
-                <img src="adelement/images/{{activeImage}}" alt="esa desh h mera" width="450px" height="270px">
+                <img src="adelement/images/{{activeImage}}"  width="450px" height="270px">
 
                 <div class="topleft">{{activeHeading.headline}}</div><br>
             </div>
@@ -178,18 +203,33 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-6 ">
-        <h2 style="margin-left:5%">images</h2>
-        <ul class="list-group scroll" >
-            <div ng-repeat="image in images">
-                <a class="list-group-item{{getActiveImageClass(images)}}"  ng-click="setActiveImage(image)">
-                    <img src="adelement/images/thumbnail/{{image}}" alt="Car" class="w3-left w3-circle w3-margin-right" style="width:30px">{{image}}
-                </a>
+    <div class="col-sm-5">
+        <h2 style="margin-left:1.5cm;" class="seven"><font face="Agency FB" style="margin-left:25%;">Select Buttons</font></h2>
+        <div class="row " >
+
+            <div class="col-sm-6" style="margin-left:5cm;">
+
+                <div ng-repeat="button in buttons">
+                    <a href="" ng-click="setActiveButton(button)">
+                        <div class="w3-btn-group">
+                            <button class="w3-btn w3-teal" >{{button.btnLabel}}</button>
+                        </div><br>
+                    </a>
+                </div>
             </div>
-        </ul>
+            <div class="col-sm-6">
+                <button class="button1" style="margin-top:1cm;margin-left:3cm;">
+                    <span>Save your Ad </span>
+                </button>
+            </div>
+
+
+        </div>
+
 
     </div>
 </div>
+</body>
 <div class="container">
     <!--
     <footer class="w3-container w3-teal">
