@@ -1,7 +1,7 @@
 CREATE TABLE headlines (
     hid INT NOT NULL AUTO_INCREMENT,
     headline VARCHAR(100) NOT NULL,
-    PRIMARY KEY ( hid ))
+    PRIMARY KEY ( hid ));
 
  CREATE TABLE subheadlines (
     shid INT NOT NULL AUTO_INCREMENT,

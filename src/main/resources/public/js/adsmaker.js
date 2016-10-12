@@ -99,7 +99,7 @@ app.controller('AdsOptionsController', ['$scope','$http',function($scope, $http)
                 alert("Ads Saved successfully");
             })
             .error(function(error) {
-                alert("Unable to save the ads. Either it would be a duplicate ads or something other unknown error has occurred.") });
+                alert("Unable to save the ads. Either it would be a duplicate ads or other unknown error has occurred.") });
     };
 
 }]);
